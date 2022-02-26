@@ -81,8 +81,9 @@ async function findQuestions(text) {
       }
     }
   }
-  return sentences[0];
-  //return questionList;
+  console.log(questionList);
+  // return sentences[0];
+  return questionList;
   //return sentences[1];
 }
 
