@@ -68,33 +68,28 @@ async function findQuestions(text) {
   let questionList = "";
   // create the Wink doc of the text
   const doc = nlp.readDoc(text);
-  // let sentences = nlp.string.sentences(text);
   let sentences = doc.sentences().out();
   console.log(sentences);
+  let z = 10;
   for (const item in sentences) {
-    let notFound = true;
-    let a = 0;
+    console.log("In item number "  + z + " the final character is ");
+    console.log(item.charAt(item.length - 1));
+    
+    // let notFound = true;
+    //let a = 0;
+    /*
     while (a < 4 && notFound) {
       if (item.charAt(item.length - a) == "?") {
         questionList += item;
         notFound = false;
       }
+      a++;
     }
+    */
   }
-  console.log(questionList);
+  //console.log(questionList);
   // return sentences[0];
-  return questionList;
-  //return sentences[1];
+  // return questionList;
+  return sentences[0];
 }
 
-
-/*
-
-for (let a = 0; a < 3; a++) {
-      if (item.charAt(item.length - a) == "?" && notFound) {
-        questionList += item;
-      }
-    }
-
-
-*/
