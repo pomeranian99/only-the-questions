@@ -70,7 +70,19 @@ async function findQuestions(text) {
   const doc = nlp.readDoc(text);
   let sentences = doc.sentences().out();
   console.log(sentences);
-  let z = 10;
+  for (let a = 0; a < sentences.length; a++) {
+    let notFound = true;
+    let z = 0;
+    while (z < 4 && notFound) {
+      if (sentences[a].charAt(sentences[a].length - z) == "?") {
+        questionList += sentences[a];
+        notFound = false;
+      }
+      z++;
+    }
+  }
+  return questionList;
+  // return sentences[0];
 }
 
 /*
