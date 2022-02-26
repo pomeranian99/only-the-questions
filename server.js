@@ -82,5 +82,5 @@ async function findQuestions(text) {
   // let sentences = nlp.string.sentences(text);
   let sentences = doc.sentences().out();
   console.log(sentences);
-  return sentences[3];
+  return sentences[1];
 }
