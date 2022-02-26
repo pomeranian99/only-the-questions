@@ -1,25 +1,51 @@
-/* a minimalist set of CSS resets */
+/* 
+font-family: 'Goudy Bookletter 1911', serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Special Elite', cursive;
+*/ 
 
-/* default to border-box */
-html {
-  box-sizing: border-box;
-  font-size: 16px;
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3em;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-/* adjust typography defaults */
 body {
-  margin: 1rem;
-  font-family: sans-serif;
-  line-height: 1.5;
+  /* background: #b2def7; */
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
-/* images and videos max out at full width */
-img,
-video {
+#final {
+  font-family: 'Special Elite', cursive;  
+  font-size: 15px;
+  background: #ffe5d3;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px  ;
+}
+
+#buttonRow {
+  margin-top: 10px;
+}
+
+
+#footer {
+  margin-top: 20px;
+}
+
+#header img {
+  float: left;
+}
+
+#header h1 {
+  position: relative;
+  left: 13px;
+}
+
+img {
+  max-width: 80%;
   height: auto;
-  max-width: 100%;
 }
