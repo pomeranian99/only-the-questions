@@ -36,13 +36,13 @@ fastify.get("/", function(request, reply) {
 fastify.post("/", function(request, reply) {
   let textGot = request.body.textTheyTyped;
   let params = {
-    greeting: textGot
+    results: textGot
   }
   // let params = {
   //   greeting: "Hello Form!"
   //};
   // request.body.paramName <-- a form post example
-  reply.view("/src/pages/index.hbs", params);
+  reply.view("/src/pages/results.hbs", params);
 });
 
 // Run the server and report out to the logs
