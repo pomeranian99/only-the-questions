@@ -1,113 +1,93 @@
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <link
-      id="favicon"
-      rel="icon"
-      href="https://cdn.glitch.me/c381265d-c908-4814-a4fc-fc34f1936207%2Ffavicon.ico?v=1633717912293"
-      type="image/x-icon"
-    />
+    <link id="favicon" rel="icon"
+        href="https://cdn.glitch.me/c381265d-c908-4814-a4fc-fc34f1936207%2Ffavicon.ico?v=1633717912293"
+        type="image/x-icon" />
     <title>just the punctuation</title>
     <link rel="canonical" href="https://glitch-hello-website.glitch.me/" />
-    <meta
-      name="description"
-      content="A script that removes all letters from a piece of text, so you see only the punctuation."
-    />
+    <meta name="description"
+        content="A script that removes all letters from a piece of text, so you see only the punctuation." />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Remove text, leave punctuation" />
     <meta property="og:type" content="article" />
-    <meta
-      property="og:description"
-      content="A script that removes all letters from a piece of text, so you see only the punctuation."
-    />
-    <meta
-      property="og:image"
-      content="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2Fhello-website-social.png?v=1616712748147"
-    />
+    <meta property="og:description"
+        content="A script that removes all letters from a piece of text, so you see only the punctuation." />
+    <meta property="og:image"
+        content="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2Fhello-website-social.png?v=1616712748147" />
     <meta name="twitter:card" content="summary" />
     <!-- bring in bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous" />
 
     <!-- import google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Special+Elite&family=Roboto:wght@700&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Special+Elite&family=Roboto:wght@700&display=swap"
+        rel="stylesheet" />
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
 
     <!-- Import the webpage's javascript file -->
     <script src="/script.js" defer></script>
-  </head>
+</head>
 
-  <!-- text goes here .... -->
-  <body>
+<!-- text goes here .... -->
+
+<body>
     <div class="wrapper">
-      <div class="container" id="container">
-        <div class="row" id="header">
-          <div class="col-sm-12">
-            <img
-              src="https://cdn.glitch.me/c381265d-c908-4814-a4fc-fc34f1936207%2Ffavicon.ico"
-            />
-            <h1 class="title">just the punctuation</h1>
-            <h2>
-              {{ greeting }}
-            </h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group">
-              <textarea id="textTheyTyped" class="form-control" rows="20">
-              </textarea>
+        <div class="container" id="container">
+            <div class="row" id="header">
+                <div class="col-sm-12">
+                    <img src="https://cdn.glitch.me/c381265d-c908-4814-a4fc-fc34f1936207%2Ffavicon.ico" />
+                    <h1 class="title">just the questions</h1>
+                    <h2>
+                        {{ greeting }}
+                    </h2>
+                </div>
             </div>
-          </div>
+            <form method="POST" action="/">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                        </div>
+                        <textarea id="textTheyTyped" class="form-control" rows="20">
+              </textarea>
+                    </div>
+                </div>
+                <div class="row" id="buttonRow">
+                    <div class="col-sm-12">
+                        <input type="submit" id="submit" value="Submit" />
+                    </div>
+                </div>
+            </form>
+            <div class="row" id="footer">
+                <div class="footer">
+                    <p>
+                        [ made by
+                        <a href="https://twitter.com/pomeranian99" target="_blank">clive</a>
+                        | here's
+                        <a href="https://clivethompson.medium.com/what-i-learned-about-my-writing-by-seeing-only-the-punctuation-efd5334060b1"
+                            target="_blank">why</a>
+                        |
+                        <a href="https://glitch.com/edit/#!/just-the-punctuation?path=style.css:35:19"
+                            target="_blank">remix!</a>
+                        ]
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="row" id="buttonRow">
-          <div class="col-sm-12">
-            <input type="submit" id="submit" value="Submit" />
-          </div>
-        </div>
-        <div class="row" id="footer">
-          <div class="footer">
-            <p>
-              [ made by
-              <a
-                href="https://twitter.com/pomeranian99"
-                target="_blank"
-              >clive</a>
-              | here's
-              <a
-                href="https://clivethompson.medium.com/what-i-learned-about-my-writing-by-seeing-only-the-punctuation-efd5334060b1"
-                target="_blank"
-              >why</a>
-              |
-              <a
-                href="https://glitch.com/edit/#!/just-the-punctuation?path=style.css:35:19"
-                target="_blank"
-              >remix!</a>
-              ]
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- bring in bootstrap javascript -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
+    </script>
+</body>
+
 </html>
