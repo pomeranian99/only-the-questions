@@ -1,8 +1,5 @@
 const path = require("path");
 
-// Load wink-nlp-utils
-//var nlp = require( 'wink-nlp-utils' );
-
 // Load wink-nlp
 const winkNLP = require( 'wink-nlp' );
 // Load "its" helper to extract item properties.
@@ -82,5 +79,7 @@ async function findQuestions(text) {
   // let sentences = nlp.string.sentences(text);
   let sentences = doc.sentences().out();
   console.log(sentences);
+  // for (const item in sentences) {
+  //}
   return sentences[1];
 }
