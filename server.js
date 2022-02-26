@@ -67,12 +67,18 @@ fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
 
 
 async function findQuestions(text) {
+  let newArray = [];
   let questionList = "";
   // create the Wink doc of the text
   const doc = nlp.readDoc( text );
   // let sentences = nlp.string.sentences(text);
   let sentences = doc.sentences().out();
   console.log(sentences);
+  for (const a in sentences) {
+    let b = a.toString();
+    
+    
+  }
   for (const item in sentences) {
     if (item.includes('?')) {
       console.log("found one!");
