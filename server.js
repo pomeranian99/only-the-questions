@@ -51,14 +51,7 @@ fastify.post("/", async function(request, reply) {
   let params = {
     results: sendBack
    }
-  
-  let testText = "TThe historian of the English people asserts that what made Alfred great, small as was his sphere of action, was “the moral grandeur of his life. He lived solely for the good of his people.” He laid the foundations for a uniform system of law,[Pg 4] and he started schools, wishing that every free-born youth who had the means should “abide at his book till he can understand English writing.” He invited scholars from other lands to settle in England; but what most told on English culture was done not by them but by the king himself. ";
-  console.log(testText);
-  const testDoc = nlp.readDoc(testText);
-  let testResult = testDoc.sentences().out();
   //let testResult = nlp.string.sentences(testText);
-  console.log(testResult);
-  
   reply.view("/src/pages/results.hbs", params);
 });
 
@@ -74,12 +67,18 @@ fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
 
 
 async function findQuestions(text) {
+  let questionList = "";
   // create the Wink doc of the text
   const doc = nlp.readDoc( text );
   // let sentences = nlp.string.sentences(text);
   let sentences = doc.sentences().out();
   console.log(sentences);
-  // for (const item in sentences) {
-  //}
-  return sentences[1];
+  for (const item in sentences) {
+    if (item.includes("?")) {
+      questionList += item;
+    }
+  }
+  console.log(questionList);
+  return questionList;
+  //return sentences[1];
 }
