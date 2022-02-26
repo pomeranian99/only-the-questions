@@ -34,9 +34,13 @@ fastify.get("/", function(request, reply) {
 
 // A POST route to handle form submissions
 fastify.post("/", function(request, reply) {
+  let textGot = request.body.textTheyTyped;
   let params = {
-    greeting: "Hello Form!"
-  };
+    greeting: textGot
+  }
+  // let params = {
+  //   greeting: "Hello Form!"
+  //};
   // request.body.paramName <-- a form post example
   reply.view("/src/pages/index.hbs", params);
 });
