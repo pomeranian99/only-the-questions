@@ -1,5 +1,9 @@
 const path = require("path");
 
+// Load wink-nlp-utils
+var nlp = require( 'wink-nlp-utils' );
+
+
 // Require the fastify framework and instantiate it
 const fastify = require("fastify")({
   // set this to true for detailed logging:
@@ -38,10 +42,7 @@ fastify.post("/", function(request, reply) {
   let params = {
     results: textGot
   }
-  // let params = {
-  //   greeting: "Hello Form!"
-  //};
-  // request.body.paramName <-- a form post example
+  
   reply.view("/src/pages/results.hbs", params);
 });
 
@@ -54,3 +55,4 @@ fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
   console.log(`Your app is listening on ${address}`);
   fastify.log.info(`server listening on ${address}`);
 });
+
