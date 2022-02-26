@@ -37,12 +37,12 @@ fastify.get("/", function(request, reply) {
 });
 
 // A POST route to handle form submissions
-fastify.post("/", function(request, reply) {
+fastify.post("/", async function(request, reply) {
   let textGot = request.body.textTheyTyped;
-  let params = {
-    results: textGot
-  }
-  
+  let params = await findQuestions(textGot);
+  //let params = {
+  //  results: textGot
+  // }
   reply.view("/src/pages/results.hbs", params);
 });
 
@@ -56,3 +56,9 @@ fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
   fastify.log.info(`server listening on ${address}`);
 });
 
+
+async function findQuestions(text) {
+  let sentences = nlp.string.sentences(text);
+  console.log(sentences);
+  return sentences[3];
+}
