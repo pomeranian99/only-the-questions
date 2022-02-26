@@ -80,6 +80,7 @@ async function findQuestions(text) {
     }
   }
   console.log(questionList);
-  return questionList;
+  return sentences[2];
+  //return questionList;
   //return sentences[1];
 }
