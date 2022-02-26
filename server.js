@@ -72,12 +72,21 @@ async function findQuestions(text) {
   console.log(sentences);
   let z = 10;
   for (const item in sentences) {
-    console.log("In item number "  + z + " the final character is ");
-    console.log(item.charAt(item.length - 1));
+    console.log(item);
+    
+  return sentences[0];
+}
+
+
+/*
+
+
+// console.log("In item number "  + z + " the final character is ");
+    // console.log(item.charAt(item.length - 1));
     
     // let notFound = true;
     //let a = 0;
-    /*
+    
     while (a < 4 && notFound) {
       if (item.charAt(item.length - a) == "?") {
         questionList += item;
@@ -85,11 +94,10 @@ async function findQuestions(text) {
       }
       a++;
     }
-    */
+    
   }
   //console.log(questionList);
   // return sentences[0];
   // return questionList;
-  return sentences[0];
-}
 
+*/
