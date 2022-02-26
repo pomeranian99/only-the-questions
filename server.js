@@ -71,12 +71,7 @@ async function findQuestions(text) {
   let sentences = doc.sentences().out();
   console.log(sentences);
   let z = 10;
-  for (const item in sentences) {
-    console.log(item);
-    
-  return sentences[0];
 }
-
 
 /*
 
