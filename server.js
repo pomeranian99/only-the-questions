@@ -72,9 +72,12 @@ async function findQuestions(text) {
   let sentences = doc.sentences().out();
   console.log(sentences);
   for (const item in sentences) {
-    for (let a = 0; a < 3; a++) {
+    let notFound = true;
+    let a = 0;
+    while (a < 4 && notFound) {
       if (item.charAt(item.length - a) == "?") {
         questionList += item;
+        notFound = false;
       }
     }
   }
@@ -82,3 +85,15 @@ async function findQuestions(text) {
   //return questionList;
   //return sentences[1];
 }
+
+
+/*
+
+for (let a = 0; a < 3; a++) {
+      if (item.charAt(item.length - a) == "?" && notFound) {
+        questionList += item;
+      }
+    }
+
+
+*/
