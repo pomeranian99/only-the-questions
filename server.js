@@ -74,7 +74,8 @@ async function findQuestions(text) {
   let sentences = doc.sentences().out();
   console.log(sentences);
   for (const item in sentences) {
-    if (item.includes("?")) {
+    if (item.includes('?')) {
+      console.log("found one!");
       questionList += item;
     }
   }
