@@ -1,6 +1,6 @@
 const path = require("path");
 
-// Load wink-nlp
+// Load wink-nlp, the natural-language tool that we'll use to identify the sentences inside a piece of text
 const winkNLP = require("wink-nlp");
 // Load "its" helper to extract item properties.
 const its = require("wink-nlp/src/its.js");
