@@ -18,7 +18,7 @@
     "wink-nlp-utils": "^2.0.7"
   },
   "engines": {
-    "node": "12.x"
+    "node": "22.x"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/glitch-mvp-node"
