@@ -72,6 +72,11 @@ async function findQuestions(text) {
   return questionList;
 }
 
+// Test route
+fastify.get("/test", function (request, reply) {
+  reply.send({ message: "Hello from Vercel!" });
+});
+
 // Initialize fastify
 let app;
 
