@@ -1,4 +1,6 @@
-const path = require("path");
+const express = require('express');
+const path = require('path');
+const { engine } = require('express-handlebars');
 
 // Load wink-nlp, the natural-language tool that we'll use to identify the sentences inside a piece of text
 const winkNLP = require("wink-nlp");
@@ -11,49 +13,49 @@ const model = require("wink-eng-lite-model");
 // Instantiate winkNLP.
 const nlp = winkNLP(model);
 
-// Require the fastify framework and instantiate it
-const fastify = require("fastify")({
-  logger: false,
-});
+const app = express();
 
-// Setup our static files
-fastify.register(require("@fastify/static"), {
-  root: path.join(__dirname, "public"),
-  prefix: "/",
-});
+// Set up Handlebars as the view engine
+app.engine('hbs', engine({ 
+  extname: '.hbs',
+  defaultLayout: false
+}));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'src/pages'));
 
-// fastify-formbody lets us parse incoming forms
-fastify.register(require("@fastify/formbody"));
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-// point-of-view is a templating manager for fastify
-fastify.register(require("@fastify/view"), {
-  engine: {
-    handlebars: require("handlebars"),
-  },
-  root: path.join(__dirname, "src/pages"),
-});
+// Parse form data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Test route
-fastify.get("/test", function (request, reply) {
-  reply.send({ message: "Hello from Vercel!" });
+app.get('/test', (req, res) => {
+  res.json({ message: "Hello from Vercel Express!" });
 });
 
-// Our main GET home page route, pulls from src/pages/index.hbs
-fastify.get("/", function (request, reply) {
-  let params = {
+// Our main GET home page route
+app.get('/', (req, res) => {
+  const params = {
     greeting: "Hello Node!",
   };
-  reply.view("index.hbs", params);
+  res.render('index', params);
 });
 
 // A POST route to handle form submissions
-fastify.post("/", async function (request, reply) {
-  let textGot = request.body.textTheyTyped;
-  let sendBack = await findQuestions(textGot);
-  let params = {
-    results: sendBack,
-  };
-  reply.view("results.hbs", params);
+app.post('/', async (req, res) => {
+  try {
+    const textGot = req.body.textTheyTyped;
+    const sendBack = await findQuestions(textGot);
+    const params = {
+      results: sendBack,
+    };
+    res.render('results', params);
+  } catch (error) {
+    console.error('Error processing form:', error);
+    res.status(500).send('Error processing your request');
+  }
 });
 
 async function findQuestions(text) {
@@ -77,26 +79,13 @@ async function findQuestions(text) {
   return questionList;
 }
 
-// Check if we're running on Vercel
-if (process.env.VERCEL) {
-  // Export for Vercel serverless
-  module.exports = async (req, res) => {
-    await fastify.ready();
-    fastify.server.emit('request', req, res);
-  };
-} else {
-  // Run the server locally
-  const start = async () => {
-    try {
-      await fastify.listen({ 
-        port: process.env.PORT || 3000, 
-        host: '0.0.0.0' 
-      });
-      console.log(`Your app is listening on port ${process.env.PORT || 3000}`);
-    } catch (err) {
-      fastify.log.error(err);
-      process.exit(1);
-    }
-  };
-  start();
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 }
+
+// Export for Vercel
+module.exports = app;
