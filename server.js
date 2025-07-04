@@ -33,6 +33,11 @@ fastify.register(require("@fastify/view"), {
   root: path.join(__dirname, "src/pages"),
 });
 
+// Test route
+fastify.get("/test", function (request, reply) {
+  reply.send({ message: "Hello from Vercel!" });
+});
+
 // Our main GET home page route, pulls from src/pages/index.hbs
 fastify.get("/", function (request, reply) {
   let params = {
@@ -72,21 +77,26 @@ async function findQuestions(text) {
   return questionList;
 }
 
-// Test route
-fastify.get("/test", function (request, reply) {
-  reply.send({ message: "Hello from Vercel!" });
-});
-
-// Initialize fastify
-let app;
-
-// Export handler for Vercel
-module.exports = async (req, res) => {
-  if (!app) {
-    app = fastify;
-    await app.ready();
-  }
-  
-  // Handle the request
-  app.server.emit('request', req, res);
-};
+// Check if we're running on Vercel
+if (process.env.VERCEL) {
+  // Export for Vercel serverless
+  module.exports = async (req, res) => {
+    await fastify.ready();
+    fastify.server.emit('request', req, res);
+  };
+} else {
+  // Run the server locally
+  const start = async () => {
+    try {
+      await fastify.listen({ 
+        port: process.env.PORT || 3000, 
+        host: '0.0.0.0' 
+      });
+      console.log(`Your app is listening on port ${process.env.PORT || 3000}`);
+    } catch (err) {
+      fastify.log.error(err);
+      process.exit(1);
+    }
+  };
+  start();
+}
